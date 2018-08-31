@@ -488,6 +488,9 @@ done
 rm -f sh.init.c.tmp
 echo "                                       done!"
 
+echo "Applying Linux patch"
+patch -d .. -p1 -N < ../tcsh.patch
+
 # apply tcsh patches
 if [ -n "$TCSH_PATCHES" ]; then
 	echo

@@ -1,0 +1,14 @@
+--- ./pksh-tcsh-6.16.00/sh.proc.c
++++ ./pksh-tcsh-6.16.00/sh.proc.c
+@@ -47,8 +47,10 @@
+ # define HZ 16
+ #endif /* aiws */
+ 
+-#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid) || defined(linux) || defined(__GNU__) || defined(__GLIBC__)
++#if defined(_BSD) || (defined(IRIS4D) && __STDC__) || defined(__lucid) || defined(__GNU__) || defined(__GLIBC__)
++#if !defined(linux)
+ # define BSDWAIT
++#endif
+ #endif /* _BSD || (IRIS4D && __STDC__) || __lucid || glibc */
+ #ifndef WTERMSIG
+ # define WTERMSIG(w)	(((union wait *) &(w))->w_termsig)
